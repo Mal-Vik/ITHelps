@@ -1,10 +1,10 @@
 <template>
     <v-app id="inspire">
         <AppBar
-            :drawerLeft="isActiveDrawerLeft"
-            :drawerRight="isActiveDrawerRight"
-            @drawerLeftLocal="showChildLeft"
-            @drawerRightLocal="showChildRight"
+            :isActiveDrawerLeft="isActiveDrawerLeft"
+            :isActiveDrawerRight="isActiveDrawerRight"
+            @emitChangeDisplayDrawerLeft="changeDisplayDrawerLeft"
+            @emitChangeDisplayDrawerRight="changeDisplayDrawerRight"
         />
 
         <NavigationDrawerLeft :drawerLeft="isActiveDrawerLeft" @drawerLeftLocal="showChildLeft" />
@@ -50,10 +50,10 @@
             dataSubDrawerRight: '',
         }),
         methods: {
-            showChildLeft(isShow) {
+            changeDisplayDrawerLeft(isShow) {
                 this.isActiveDrawerLeft = isShow
             },
-            showChildRight(isShow) {
+            changeDisplayDrawerRight(isShow) {
                 this.isActiveDrawerRight = isShow
             },
             showSubNavigationDrawerLeft() {
