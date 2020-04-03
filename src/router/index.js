@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
-import JavaScript from '../views/JavaScript'
-import VueJS from '../views/VueJS'
+import JavaScript from '../views/technologies/JavaScript'
+import VueJS from '../views/technologies/VueJS'
 import Frame from '../views/Frame'
 
 Vue.use(VueRouter)

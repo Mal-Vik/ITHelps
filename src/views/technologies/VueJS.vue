@@ -9,5 +9,3 @@
         name: 'VueJS',
     }
 </script>
-
-<style scoped></style>
