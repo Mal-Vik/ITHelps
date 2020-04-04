@@ -12,7 +12,7 @@
 
         <v-content>
             <router-view />
-            <vue-friendly-iframe src="https://www.npmjs.com/package/vue-cli-plugin-pug" @load="onLoad" name="name" />
+            <!--<vue-friendly-iframe src="https://www.npmjs.com/package/vue-cli-plugin-pug" @load="onLoad" name="name" />-->
         </v-content>
 
         <Footer />

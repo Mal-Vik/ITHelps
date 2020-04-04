@@ -16,17 +16,17 @@
                 <div class="iframe-loading" v-if="iframeLoading">
                     iframe loading...
                 </div>
-                <vue-friendly-iframe
-                    ref="iframeEl"
-                    :style="{ display: iframeLoading ? 'none' : 'block' }"
-                    :src="example1Form.src + '/' + example1Form.searchTerm"
-                    @load="onLoad"
-                    @iframe-load="onIframeLoad"
-                    frameborder="0"
-                    gesture="media"
-                    allow="encrypted-media"
-                >
-                </vue-friendly-iframe>
+                <!--<vue-friendly-iframe-->
+                <!--    ref="iframeEl"-->
+                <!--    :style="{ display: iframeLoading ? 'none' : 'block' }"-->
+                <!--    :src="example1Form.src + '/' + example1Form.searchTerm"-->
+                <!--    @load="onLoad"-->
+                <!--    @iframe-load="onIframeLoad"-->
+                <!--    frameborder="0"-->
+                <!--    gesture="media"-->
+                <!--    allow="encrypted-media"-->
+                <!--&gt;-->
+                <!--</vue-friendly-iframe>-->
             </div>
         </div>
     </div>
