@@ -1,18 +1,14 @@
 <template>
     <v-app id="inspire">
         <AppBar
-            :drawerLeft="isActiveDrawerLeft"
-            :drawerRight="isActiveDrawerRight"
-            @drawerLeftLocal="showChildLeft"
-            @drawerRightLocal="showChildRight"
+            :isActiveDrawerLeft="isActiveDrawerLeft"
+            :isActiveDrawerRight="isActiveDrawerRight"
+            @emitChangeDisplayDrawerLeft="changeDisplayDrawerLeft"
+            @emitChangeDisplayDrawerRight="changeDisplayDrawerRight"
         />
-
-        <NavigationDrawerLeft :drawerLeft="isActiveDrawerLeft" @drawerLeftLocal="showChildLeft" />
-        <v-navigation-drawer v-model="isActiveSubDrawerLeft" fixed temporary />
-
-        <NavigationDrawerRight :drawerRight="isActiveDrawerRight" @drawerRightLocal="showChildRight" />
-
-        <SubNavigationDrawerRight :isActiveSubDrawerRight="isActiveSubDrawerRight" :dataSubDrawerRight="dataSubDrawerRight" />
+        <NavigationDrawerLeft :isActiveDrawerLeft="isActiveDrawerLeft" />
+        <NavigationDrawerRight :isActiveDrawerRight="isActiveDrawerRight" @emitDisplaySubDrawerRight="showNavigationSubDrawerRight" />
+        <NavigationSubDrawerRight :isActiveSubDrawerRight="isActiveSubDrawerRight" :dataSubDrawerRight="dataSubDrawerRight" />
 
         <v-content>
             <router-view />
@@ -29,7 +25,7 @@
     import Footer from './components/Footer'
     import NavigationDrawerLeft from './components/navigation_boxes/NavigationDrawerLeft'
     import NavigationDrawerRight from './components/navigation_boxes/NavigationDrawerRight'
-    import SubNavigationDrawerRight from './components/navigation_boxes/SubNavigationDrawerRight'
+    import NavigationSubDrawerRight from './components/navigation_boxes/NavigationSubDrawerRight'
 
     export default {
         name: 'App',
@@ -37,7 +33,7 @@
             AppBar,
             NavigationDrawerLeft,
             NavigationDrawerRight,
-            SubNavigationDrawerRight,
+            NavigationSubDrawerRight,
             Footer,
             // VueFriendlyIframe,
         },
@@ -50,22 +46,22 @@
             dataSubDrawerRight: '',
         }),
         methods: {
-            showChildLeft(isShow) {
-                this.isActiveDrawerLeft = isShow
+            changeDisplayDrawerLeft(isActiveDrawerLeft) {
+                this.isActiveDrawerLeft = isActiveDrawerLeft
             },
-            showChildRight(isShow) {
-                this.isActiveDrawerRight = isShow
+            changeDisplayDrawerRight(isActiveDrawerRight) {
+                this.isActiveDrawerRight = isActiveDrawerRight
             },
             showSubNavigationDrawerLeft() {
                 this.isActiveSubDrawerLeft = !this.isActiveSubDrawerLeft
             },
-            showSubNavigationDrawerRight(item) {
-                this.isActiveSubDrawerRight = !this.isActiveSubDrawerRight
+            showNavigationSubDrawerRight(item) {
+                let isActiveSubDrawerRight = this.isActiveSubDrawerRight
+                this.isActiveSubDrawerRight = !isActiveSubDrawerRight
                 this.dataSubDrawerRight = item
-            },
-            onLoad() {
-                alert('dsdf')
             },
         },
     }
 </script>
+
+<style></style>
