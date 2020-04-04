@@ -99,7 +99,20 @@
                 { icon: 'lightbulb_outline', label: 'HTML5' },
                 {
                     icon: 'lightbulb_outline',
-                    label: 'CSS3',
+                    label: 'CSS',
+                    drawer: [
+                        { icon: 'lightbulb_outline', text: 'Препроцессоры' },
+                        { divider: true },
+                        { icon: 'lightbulb_outline', text: 'Sass' },
+                        { icon: 'lightbulb_outline', text: 'SCSS' },
+                        { icon: 'lightbulb_outline', text: 'LESS' },
+                        { icon: 'lightbulb_outline', text: 'Stylus' },
+                        { divider: true },
+                        { divider: true },
+                        { icon: 'lightbulb_outline', text: 'Платформа' },
+                        { divider: true },
+                        { icon: 'lightbulb_outline', text: 'PostCSS' },
+                    ],
                 },
                 { icon: 'lightbulb_outline', label: 'WebPack' },
                 {
