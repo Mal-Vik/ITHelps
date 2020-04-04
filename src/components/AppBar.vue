@@ -14,23 +14,14 @@
     export default {
         name: 'AppBar',
         props: ['isActiveDrawerLeft', 'isActiveDrawerRight'],
-        data: () => ({
-            // drawerLeftLocal: this.drawerLeft,
-            // drawerRight: false,
-        }),
+        data: () => ({}),
         methods: {
             emitChangeDisplayDrawerLeft(isActiveDrawerLeft) {
-                console.log('AppBar this.isActiveDrawerLeft')
-                console.log(isActiveDrawerLeft)
                 this.$emit('emitChangeDisplayDrawerLeft', isActiveDrawerLeft)
             },
             emitChangeDisplayDrawerRight(isActiveDrawerRight) {
-                console.log('AppBar this.isActiveDrawerRight')
-                console.log(isActiveDrawerRight)
                 this.$emit('emitChangeDisplayDrawerRight', isActiveDrawerRight)
             },
         },
     }
 </script>
-
-<style scoped></style>

@@ -1,6 +1,6 @@
 <template>
-    <v-navigation-drawer v-model="drawerLeft" app>
-        <v-list dense>
+    <v-navigation-drawer v-model="isActiveDrawerLeft" app class="black lighten-4">
+        <v-list dense class="white-bg">
             <v-list-item @click="openSubDrawerLeft">
                 <v-list-item-action>
                     <v-icon>exit_to_app</v-icon>
@@ -25,7 +25,7 @@
 <script>
     export default {
         name: 'NavigationDrawerLeft',
-        props: ['drawerLeft'],
+        props: ['isActiveDrawerLeft'],
         data: () => ({
             items2: [
                 { picture: 28, text: 'Joseph' },
@@ -35,21 +35,18 @@
                 { picture: 78, text: 'MKBHD' },
             ],
         }),
-        watch: {
-            drawerLeft: function(isShow) {
-                this.sendDrawerLeftToParent(isShow)
-            },
-        },
         methods: {
-            sendDrawerLeftToParent(isShow) {
-                this.$emit('drawerLeftLocal', isShow)
-            },
             openSubDrawerLeft() {
-                this.$parent.$options.parent.showSubNavigationDrawerLeft()
+                // this.$parent.$options.parent.showSubNavigationDrawerLeft()
                 // console.log(this.$root.$options)
+                console.log('Сработал метод открытия Sub Drawer Right!')
             },
         },
     }
 </script>
 
-<style scoped></style>
+<style>
+    .white-bg {
+        background: #ffffff !important;
+    }
+</style>

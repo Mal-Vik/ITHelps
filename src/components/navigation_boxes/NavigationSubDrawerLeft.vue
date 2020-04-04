@@ -4,8 +4,6 @@
 
 <script>
     export default {
-        name: 'SubNavigationDrawerLeft',
+        name: 'NavigationSubDrawerLeft',
     }
 </script>
-
-<style scoped></style>

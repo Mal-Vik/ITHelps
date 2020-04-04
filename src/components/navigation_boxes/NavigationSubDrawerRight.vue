@@ -1,6 +1,6 @@
 <template>
-    <v-navigation-drawer v-model="isActiveSubDrawerRight" fixed temporary width="200" right>
-        <v-list dense class="grey lighten-4">
+    <v-navigation-drawer fixed temporary width="200" right v-model="isActiveDisplay" class="grey lighten-4">
+        <v-list dense>
             <template v-for="(item, i) in dataSubDrawerRight.drawer">
                 <v-list-item :key="i" :to="dataSubDrawerRight.to">
                     <v-list-item-action>
@@ -21,8 +21,19 @@
     export default {
         name: 'SubNavigationDrawerRight',
         props: ['isActiveSubDrawerRight', 'dataSubDrawerRight'],
-        data: () => ({}),
+        data: () => ({
+            isActiveDisplay: false,
+        }),
+        watch: {
+            isActiveSubDrawerRight: function(isActiveSubDrawerRight) {
+                isActiveSubDrawerRight !== this.isActiveDisplay
+                    ? (this.isActiveDisplay = isActiveSubDrawerRight)
+                    : console.log('Равенство!')
+            },
+            isActiveDisplay: function(isActiveDisplay) {
+                if (isActiveDisplay !== this.isActiveSubDrawerRight)
+                    this.$parent.$options.parent.showNavigationSubDrawerRight(isActiveDisplay)
+            },
+        },
     }
 </script>
-
-<style scoped></style>

@@ -1,6 +1,6 @@
 <template>
-    <v-navigation-drawer v-model="drawerRight" app clipped color="grey lighten-4" right>
-        <v-list dense class="grey lighten-4">
+    <v-navigation-drawer v-model="isActiveDrawerRight" app clipped right class="grey lighten-4">
+        <v-list dense>
             <template v-for="(item, i) in items">
                 <v-layout v-if="item.heading" :key="i" row align-center>
                     <v-flex xs6>
@@ -31,7 +31,7 @@
 <script>
     export default {
         name: 'NavigationDrawerRight',
-        props: ['drawerRight'],
+        props: ['isActiveDrawerRight'],
         data: () => ({
             items: [
                 {
@@ -42,12 +42,21 @@
                         { icon: 'lightbulb_outline', text: 'ES2' },
                         { icon: 'lightbulb_outline', text: 'ES3' },
                         { icon: 'lightbulb_outline', text: 'ES4' },
-                        { icon: 'lightbulb_outline', text: 'ES5' },
+                        {
+                            icon: 'lightbulb_outline',
+                            text: 'ES5',
+                        },
                         { icon: 'lightbulb_outline', text: 'ES6' },
                         { icon: 'lightbulb_outline', text: 'ES7' },
-                        { icon: 'lightbulb_outline', text: 'ES8' },
+                        {
+                            icon: 'lightbulb_outline',
+                            text: 'ES8',
+                        },
                         { icon: 'lightbulb_outline', text: 'ES9' },
-                        { icon: 'lightbulb_outline', text: 'ES10' },
+                        {
+                            icon: 'lightbulb_outline',
+                            text: 'ES10',
+                        },
                         { icon: 'lightbulb_outline', text: 'ES11' },
                     ],
                     to: '/js',
@@ -57,64 +66,106 @@
                     label: 'VueJS',
                     drawer: [
                         { icon: 'lightbulb_outline', text: 'Установка' },
-                        { icon: 'lightbulb_outline', text: 'Хуки жизненного цикла экземпляра' },
+                        {
+                            icon: 'lightbulb_outline',
+                            text: 'Хуки жизненного цикла экземпляра',
+                        },
                         { icon: 'lightbulb_outline', text: 'ES3' },
                         { icon: 'lightbulb_outline', text: 'ES4' },
-                        { icon: 'lightbulb_outline', text: 'ES5' },
+                        {
+                            icon: 'lightbulb_outline',
+                            text: 'ES5',
+                        },
                         { icon: 'lightbulb_outline', text: 'ES6' },
                         { icon: 'lightbulb_outline', text: 'ES7' },
-                        { icon: 'lightbulb_outline', text: 'ES8' },
+                        {
+                            icon: 'lightbulb_outline',
+                            text: 'ES8',
+                        },
                         { icon: 'lightbulb_outline', text: 'ES9' },
-                        { icon: 'lightbulb_outline', text: 'ES10' },
+                        {
+                            icon: 'lightbulb_outline',
+                            text: 'ES10',
+                        },
                         { icon: 'lightbulb_outline', text: 'ES11' },
                     ],
                     to: '/vue-js',
                 },
-                { icon: 'lightbulb_outline', label: 'Vuetify' },
+                {
+                    icon: 'lightbulb_outline',
+                    label: 'Vuetify',
+                    drawer: [{ icon: 'lightbulb_outline', text: 'Установка' }],
+                },
                 { icon: 'lightbulb_outline', label: 'HTML5' },
-                { icon: 'lightbulb_outline', label: 'CSS3' },
+                {
+                    icon: 'lightbulb_outline',
+                    label: 'CSS3',
+                },
                 { icon: 'lightbulb_outline', label: 'WebPack' },
-                { icon: 'lightbulb_outline', label: 'SASS/SCSS' },
+                {
+                    icon: 'lightbulb_outline',
+                    label: 'SASS/SCSS',
+                },
                 { icon: 'lightbulb_outline', label: 'Prettier' },
-                { icon: 'lightbulb_outline', label: 'ESLint' },
+                {
+                    icon: 'lightbulb_outline',
+                    label: 'ESLint',
+                },
                 { icon: 'lightbulb_outline', label: 'Babel' },
-                { icon: 'lightbulb_outline', label: 'BrowsersList' },
+                {
+                    icon: 'lightbulb_outline',
+                    label: 'BrowsersList',
+                },
                 { icon: 'lightbulb_outline', label: 'vue-router' },
-                { icon: 'lightbulb_outline', label: 'VUEX' },
+                {
+                    icon: 'lightbulb_outline',
+                    label: 'VUEX',
+                },
                 { icon: 'lightbulb_outline', label: 'Material Icons' },
-                { icon: 'lightbulb_outline', label: 'MDI' },
+                {
+                    icon: 'lightbulb_outline',
+                    label: 'MDI',
+                },
                 { divider: true },
                 { icon: 'lightbulb_outline', label: 'Notes' },
+                {
+                    icon: 'lightbulb_outline',
+                    label: 'Notes',
+                },
                 { icon: 'lightbulb_outline', label: 'Notes' },
                 { icon: 'lightbulb_outline', label: 'Notes' },
-                { icon: 'lightbulb_outline', label: 'Notes' },
-                { icon: 'touch_app', label: 'Reminders' },
+                {
+                    icon: 'touch_app',
+                    label: 'Reminders',
+                },
                 { divider: true },
                 { heading: 'Labels' },
-                { icon: 'add', label: 'Create new label' },
+                {
+                    icon: 'add',
+                    label: 'Create new label',
+                },
                 { divider: true },
                 { icon: 'archive', label: 'Archive' },
-                { icon: 'delete', label: 'Trash' },
+                {
+                    icon: 'delete',
+                    label: 'Trash',
+                },
                 { divider: true },
                 { icon: 'settings', label: 'Settings' },
                 { icon: 'chat_bubble', label: 'Trash' },
-                { icon: 'help', label: 'Help' },
+                {
+                    icon: 'help',
+                    label: 'Help',
+                },
                 { icon: 'phonelink', label: 'App downloads' },
                 { icon: 'keyboard', label: 'Keyboard shortcuts' },
             ],
         }),
-        watch: {
-            drawerRight: function(isShow) {
-                this.$emit('drawerRightLocal', isShow)
-            },
-        },
         methods: {
             openSubDrawerRight(item) {
-                this.$parent.$options.parent.showSubNavigationDrawerRight(item)
-                // this.$root.$options.methods.showLeftSubNavigationDrawer('dsfsdf')
+                this.$emit('emitDisplaySubDrawerRight', item)
+                // this.$parent.$options.parent.showSubNavigationDrawerRight(item) // Альтернативный вариант
             },
         },
     }
 </script>
-
-<style scoped></style>
