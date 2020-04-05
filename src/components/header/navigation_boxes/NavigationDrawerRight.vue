@@ -1,31 +1,20 @@
-<template>
-    <v-navigation-drawer v-model="isActiveDrawerRight" app clipped right class="grey lighten-4">
-        <v-list dense>
-            <template v-for="(item, i) in items">
-                <v-layout v-if="item.heading" :key="i" row align-center>
-                    <v-flex xs6>
-                        <v-subheader v-if="item.heading">
-                            {{ item.heading }}
-                        </v-subheader>
-                    </v-flex>
-                    <v-flex xs6 class="text-xs-right">
-                        <v-btn small text>edit</v-btn>
-                    </v-flex>
-                </v-layout>
-                <v-divider v-else-if="item.divider" :key="i" dark class="my-3" />
-                <v-list-item v-else :key="i" @click.stop="openSubDrawerRight(item)">
-                    <v-list-item-action>
-                        <v-icon>{{ item.icon }}</v-icon>
-                    </v-list-item-action>
-                    <v-list-item-content>
-                        <v-list-item-title class="grey--text">
-                            {{ item.name }}
-                        </v-list-item-title>
-                    </v-list-item-content>
-                </v-list-item>
-            </template>
-        </v-list>
-    </v-navigation-drawer>
+<template lang='pug'>
+    v-navigation-drawer.grey.lighten-4(v-model='isActiveDrawerRight' app clipped right)
+        v-list(dense)
+            template(v-for='(item, i) in items')
+                v-layout(v-if='item.heading' :key='i' row align-center)
+                    v-flex(xs6)
+                        v-subheader(v-if='item.heading')
+                            | {{ item.heading }}
+                    v-flex.text-xs-right(xs6)
+                        v-btn(small text) edit
+                v-divider.my-3(v-else-if='item.divider' :key='i')
+                v-list-item(v-else :key='i' @click.stop='openSubDrawerRight(item)')
+                    v-list-item-action
+                        v-icon {{ item.icon }}
+                    v-list-item-content
+                        v-list-item-title.grey--text
+                            | {{ item.name }}
 </template>
 
 <script>
