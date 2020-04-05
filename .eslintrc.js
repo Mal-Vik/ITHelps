@@ -1,6 +1,7 @@
 module.exports = {
-    extends: ['plugin:vue/essential', 'eslint:recommended', '@vue/prettier'],
-    plugins: ['prettier'],
+    extends: ['plugin:vue/essential', 'eslint:recommended'],
+    // extends: ['plugin:vue/essential', 'eslint:recommended', '@vue/prettier'],
+    // plugins: ['prettier'],
     root: true,
 
     env: {
@@ -15,7 +16,7 @@ module.exports = {
     rules: {
         'no-unused-vars': 1,
         'no-console': 'off',
-        'prettier/prettier': 'error',
+        // 'prettier/prettier': 'error',
         'func-names': 'off',
         'object-shorthand': 'off',
         'vue/html-quotes': 'warn',
