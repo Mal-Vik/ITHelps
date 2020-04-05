@@ -19,7 +19,7 @@
                     </v-list-item-action>
                     <v-list-item-content>
                         <v-list-item-title class="grey--text">
-                            {{ item.label }}
+                            {{ item.name }}
                         </v-list-item-title>
                     </v-list-item-content>
                 </v-list-item>
@@ -29,138 +29,23 @@
 </template>
 
 <script>
+    import axios from 'axios'
+    import resource from 'resource-axios' // Применение 'resource-axios'
+    const DB = resource(process.env.VUE_APP_DB, axios) // Применение 'resource-axios'
+
     export default {
         name: 'NavigationDrawerRight',
         props: ['isActiveDrawerRight'],
         data: () => ({
-            items: [
-                {
-                    icon: 'lightbulb_outline',
-                    label: 'JavaScript',
-                    drawer: [
-                        { icon: 'lightbulb_outline', text: 'ES1' },
-                        { icon: 'lightbulb_outline', text: 'ES2' },
-                        { icon: 'lightbulb_outline', text: 'ES3' },
-                        { icon: 'lightbulb_outline', text: 'ES4' },
-                        {
-                            icon: 'lightbulb_outline',
-                            text: 'ES5',
-                        },
-                        { icon: 'lightbulb_outline', text: 'ES6' },
-                        { icon: 'lightbulb_outline', text: 'ES7' },
-                        {
-                            icon: 'lightbulb_outline',
-                            text: 'ES8',
-                        },
-                        { icon: 'lightbulb_outline', text: 'ES9' },
-                        {
-                            icon: 'lightbulb_outline',
-                            text: 'ES10',
-                        },
-                        { icon: 'lightbulb_outline', text: 'ES11' },
-                    ],
-                    to: '/js',
-                },
-                {
-                    icon: 'lightbulb_outline',
-                    label: 'VueJS',
-                    drawer: [
-                        { icon: 'lightbulb_outline', text: 'Установка' },
-                        {
-                            icon: 'lightbulb_outline',
-                            text: 'Хуки жизненного цикла экземпляра',
-                        },
-                        { icon: 'lightbulb_outline', text: 'ES3' },
-                        { icon: 'lightbulb_outline', text: 'ES4' },
-                        {
-                            icon: 'lightbulb_outline',
-                            text: 'ES5',
-                        },
-                        { icon: 'lightbulb_outline', text: 'ES6' },
-                        { icon: 'lightbulb_outline', text: 'ES7' },
-                        {
-                            icon: 'lightbulb_outline',
-                            text: 'ES8',
-                        },
-                        { icon: 'lightbulb_outline', text: 'ES9' },
-                        {
-                            icon: 'lightbulb_outline',
-                            text: 'ES10',
-                        },
-                        { icon: 'lightbulb_outline', text: 'ES11' },
-                    ],
-                    to: '/vue-js',
-                },
-                {
-                    icon: 'lightbulb_outline',
-                    label: 'Vuetify',
-                    drawer: [{ icon: 'lightbulb_outline', text: 'Установка' }],
-                },
-                { icon: 'lightbulb_outline', label: 'HTML5' },
-                {
-                    icon: 'lightbulb_outline',
-                    label: 'CSS3',
-                },
-                { icon: 'lightbulb_outline', label: 'WebPack' },
-                {
-                    icon: 'lightbulb_outline',
-                    label: 'SASS/SCSS',
-                },
-                { icon: 'lightbulb_outline', label: 'Prettier' },
-                {
-                    icon: 'lightbulb_outline',
-                    label: 'ESLint',
-                },
-                { icon: 'lightbulb_outline', label: 'Babel' },
-                {
-                    icon: 'lightbulb_outline',
-                    label: 'BrowsersList',
-                },
-                { icon: 'lightbulb_outline', label: 'vue-router' },
-                {
-                    icon: 'lightbulb_outline',
-                    label: 'VUEX',
-                },
-                { icon: 'lightbulb_outline', label: 'Material Icons' },
-                {
-                    icon: 'lightbulb_outline',
-                    label: 'MDI',
-                },
-                { divider: true },
-                { icon: 'lightbulb_outline', label: 'Notes' },
-                {
-                    icon: 'lightbulb_outline',
-                    label: 'Notes',
-                },
-                { icon: 'lightbulb_outline', label: 'Notes' },
-                { icon: 'lightbulb_outline', label: 'Notes' },
-                {
-                    icon: 'touch_app',
-                    label: 'Reminders',
-                },
-                { divider: true },
-                { heading: 'Labels' },
-                {
-                    icon: 'add',
-                    label: 'Create new label',
-                },
-                { divider: true },
-                { icon: 'archive', label: 'Archive' },
-                {
-                    icon: 'delete',
-                    label: 'Trash',
-                },
-                { divider: true },
-                { icon: 'settings', label: 'Settings' },
-                { icon: 'chat_bubble', label: 'Trash' },
-                {
-                    icon: 'help',
-                    label: 'Help',
-                },
-                { icon: 'phonelink', label: 'App downloads' },
-                { icon: 'keyboard', label: 'Keyboard shortcuts' },
-            ],
+            items: [],
         }),
+        mounted() {
+            // axios.get(process.env.VUE_APP_DB + process.env.VUE_APP_DB_TECHNOLOGIES).then(response => { // применение 'axios'
+            DB.get(process.env.VUE_APP_DB_TECHNOLOGIES).then(response => {
+                // Применение 'resource-axios'
+                this.items = this.$papa.parse(response.data, { header: true }).data
+            })
+        },
         methods: {
             openSubDrawerRight(item) {
                 this.$emit('emitDisplaySubDrawerRight', item)
