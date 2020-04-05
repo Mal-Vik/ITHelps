@@ -3,6 +3,9 @@
 
 module.exports = {
     assetsDir: 'static',
+    publicPath: './',
+    outputDir: 'dist',
+    indexPath: 'index.html',
     configureWebpack: {
         resolve: {
             extensions: ['*', '.js', '.vue', '.json'],
