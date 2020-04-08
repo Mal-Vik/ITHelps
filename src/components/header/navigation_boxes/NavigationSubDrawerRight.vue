@@ -11,10 +11,6 @@
 </template>
 
 <script>
-    import axios from 'axios'
-    import resource from 'resource-axios' // Применение 'resource-axios'
-    const DB = resource(process.env.VUE_APP_DB, axios) // Применение 'resource-axios'
-
     export default {
         name: 'SubNavigationDrawerRight',
         props: ['isActiveSubDrawerRight', 'dataSubDrawerRight'],
@@ -27,12 +23,7 @@
             isActiveSubDrawerRight: function(isActiveSubDrawerRight) {
                 if(isActiveSubDrawerRight !== this.isActiveDisplay) {
                     this.isActiveDisplay = isActiveSubDrawerRight;
-                    let db = (this.dataSubDrawerRight.name+this.prefix).toLowerCase()
-                    DB.get(db).then(response => {
-                        this.items = this.$papa.parse(response.data, { header: true }).data
-                    }).catch(response=>{
-                        console.log(response)
-                    })
+                    this.items = this.dataSubDrawerRight
                 } else {
                     console.log('Равенство!')
                 }

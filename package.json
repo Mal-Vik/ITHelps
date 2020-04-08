@@ -23,6 +23,10 @@
     "scripts": {
         "serve": "vue-cli-service serve --mode development",
         "build": "vue-cli-service build --modern",
+        "strapi-dev": "cd ../ITHelps-CMS && npm develop",
+        "mongod": "brew services run mongodb-community",
+        "mongod-status": "brew services list",
+        "mongod-stop": "brew services stop mongodb-community",
         "lint": "vue-cli-service lint"
     },
     "dependencies": {

@@ -9,30 +9,38 @@
                     v-flex.text-xs-right(xs6)
                         v-btn(small text) edit
                 v-divider.my-3(v-else-if='item.divider' :key='i')
-                v-list-item(v-else :key='i' @click.stop='openSubDrawerRight(item)')
+                v-list-item(v-else :key='i' @click.stop='openSubDrawerRight(item.sub_drawer)')
                     v-list-item-action
-                        v-icon {{ item.icon }}
+                        v-icon {{ item.icon_name }}
                     v-list-item-content
                         v-list-item-title.grey--text
                             | {{ item.name }}
 </template>
 
 <script>
-    import axios from 'axios'
+    import {mapGetters} from 'vuex'
+    import axios    from 'axios'
     import resource from 'resource-axios' // Применение 'resource-axios'
-    const DB = resource(process.env.VUE_APP_DB, axios) // Применение 'resource-axios'
+    const DB = resource(process.env.VUE_APP_DB_URL, axios) // Применение 'resource-axios'
 
     export default {
         name: 'NavigationDrawerRight',
-        props: ['isActiveDrawerRight'],
+        props: [ 'isActiveDrawerRight' ],
         data: () => ({
             items: [],
         }),
+        // computed: {
+        //     getAllDrawer() {
+        //         return this.$store.getters.getAllDrawer
+        //     }
+        // },
+        computed: mapGetters(['getAllDrawer']),
         mounted() {
             // axios.get(process.env.VUE_APP_DB + process.env.VUE_APP_DB_TECHNOLOGIES).then(response => { // применение 'axios'
-            DB.get(process.env.VUE_APP_DB_TECHNOLOGIES).then(response => {
+            DB.get(process.env.VUE_APP_TABLE_DRAWER_RIGHT).then(response => {
                 // Применение 'resource-axios'
-                this.items = this.$papa.parse(response.data, { header: true }).data
+                console.log(response.data)
+                this.items = response.data
             })
         },
         methods: {
