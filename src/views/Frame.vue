@@ -1,52 +1,34 @@
-<template>
-    <div id="examples">
-        <h2>Example</h2>
-        <div class="example-1">
-            <form>
-                <div class="form-group">
-                    <label>Enter a search term:</label>
-                    <input class="form-control" v-model="example1Form.searchTerm" />
-                </div>
-                <div class="form-group">
-                    <label>Iframe URL:</label>
-                    <input class="form-control" :value="example1Form.src + '/' + example1Form.searchTerm" readonly="readonly" />
-                </div>
-            </form>
-            <div class="iframe-wrapper">
-                <div class="iframe-loading" v-if="iframeLoading">
-                    iframe loading...
-                </div>
-                <!--<vue-friendly-iframe-->
-                <!--    ref="iframeEl"-->
-                <!--    :style="{ display: iframeLoading ? 'none' : 'block' }"-->
-                <!--    :src="example1Form.src + '/' + example1Form.searchTerm"-->
-                <!--    @load="onLoad"-->
-                <!--    @iframe-load="onIframeLoad"-->
-                <!--    frameborder="0"-->
-                <!--    gesture="media"-->
-                <!--    allow="encrypted-media"-->
-                <!--&gt;-->
-                <!--</vue-friendly-iframe>-->
-            </div>
-        </div>
-    </div>
+<template lang='pug'>
+    .Frame
+        .iframe-wrapper
+            .iframe-loading(v-if='iframeLoading')
+                | iframe loading...
+            vue-friendly-iframe(
+                :src="drawerRightSubId ? drawerRightSubId : '' ",
+                :style="{ display: iframeLoading ? 'none' : 'block' }",
+                @iframe-load='onIframeLoad',
+                @load='onLoad',
+                allow='encrypted-media',
+                frameborder='0',
+                gesture='media',
+                ref='iframeEl'
+            )
 </template>
 
 <script>
     export default {
         name: 'Frame',
-        data() {
-            return {
-                example1Form: {
-                    src: 'https://www.pexels.com/search',
-                    searchTerm: 'tiger',
-                },
-                iframeLoading: true,
+        data: () => ({
+            iframeLoading: true,
+        }),
+        computed: {
+            drawerRightSubId() {
+                return this.$store.getters.drawerRightSubId(this.$route.params.id).link_frame
             }
         },
         methods: {
             onLoad() {
-                console.log('iframe loaded')
+                console.log('iframe loaded FRAME')
 
                 this.iframeLoading = false
             },
@@ -58,10 +40,11 @@
 </script>
 
 <style lang="scss">
-    #examples {
+    .Frame {
+        height: 100%;
         .iframe-wrapper {
             border: 1px solid gray;
-            height: 600px;
+            height: 100%;
 
             .vue-friendly-iframe {
                 height: 100%;

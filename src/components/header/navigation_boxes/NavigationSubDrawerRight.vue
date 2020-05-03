@@ -1,38 +1,36 @@
-<template>
-    <v-navigation-drawer fixed temporary width="200" right v-model="isActiveDisplay" class="grey lighten-4">
-        <v-list dense>
-            <template v-for="(item, i) in dataSubDrawerRight.drawer">
-                <v-list-item :key="i" :to="dataSubDrawerRight.to">
-                    <v-list-item-action>
-                        <v-icon>{{ item.icon }}</v-icon>
-                    </v-list-item-action>
-                    <v-list-item-content>
-                        <v-list-item-title class="grey--text">
-                            {{ item.name }}
-                        </v-list-item-title>
-                    </v-list-item-content>
-                </v-list-item>
-            </template>
-        </v-list>
-    </v-navigation-drawer>
+<template lang='pug'>
+    v-navigation-drawer.grey.lighten-4(fixed temporary width='200' right v-model='isActiveDisplay')
+        v-list
+            template(v-for='(item, i) in items')
+                v-list-item(:key='i' :to='framePath+"/"+item.id')
+                    v-list-item-action(style='margin-right:20px')
+                        v-icon(style='margin:auto') {{ item.icon }}
+                    v-list-item-content
+                        v-list-item-title.grey--text
+                            | {{ item.name }}
 </template>
 
 <script>
     export default {
         name: 'SubNavigationDrawerRight',
-        props: ['isActiveSubDrawerRight', 'dataSubDrawerRight'],
+        props: [ 'isActiveSubDrawerRight', 'dataDrawerRight' ],
         data: () => ({
             isActiveDisplay: false,
+            items: [],
+            framePath: process.env.VUE_APP_ROUTER_FRAME
         }),
         watch: {
-            isActiveSubDrawerRight: function(isActiveSubDrawerRight) {
-                isActiveSubDrawerRight !== this.isActiveDisplay
-                    ? (this.isActiveDisplay = isActiveSubDrawerRight)
-                    : console.log('Равенство!')
+            isActiveSubDrawerRight: function (isActiveSubDrawerRight) {
+                if (isActiveSubDrawerRight !== this.isActiveDisplay) {
+                    this.isActiveDisplay = isActiveSubDrawerRight;
+                    this.items = this.dataDrawerRight['sub_drawer'];
+                } else {
+                    console.log('Равенство!')
+                }
             },
-            isActiveDisplay: function(isActiveDisplay) {
+            isActiveDisplay: function (isActiveDisplay) {
                 if (isActiveDisplay !== this.isActiveSubDrawerRight)
-                    this.$parent.$options.parent.showNavigationSubDrawerRight(isActiveDisplay)
+                    this.$parent.showNavigationSubDrawerRight(isActiveDisplay)
             },
         },
     }

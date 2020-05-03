@@ -1,5 +1,5 @@
 <template lang="pug">
-    v-footer.footer(app='' padless='' color='amber')
+    v-footer.footer(app='' padless='' color='pink darken-4')
         span {{ title }}
         v-spacer
         span(v-html='copy')

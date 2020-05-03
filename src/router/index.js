@@ -32,7 +32,7 @@ const routes = [
         component: VueJS,
     },
     {
-        path: '/frame',
+        path: '/frame/:id',
         name: 'Frame',
         component: Frame,
     },

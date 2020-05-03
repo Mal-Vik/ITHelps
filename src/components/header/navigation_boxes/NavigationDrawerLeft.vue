@@ -1,40 +1,38 @@
-<template>
-    <v-navigation-drawer v-model="isActiveDrawerLeft" app class="black lighten-4">
-        <v-list dense class="white-bg">
-            <v-list-item @click="openSubDrawerLeft">
-                <v-list-item-action>
-                    <v-icon>exit_to_app</v-icon>
-                </v-list-item-action>
-                <v-list-item-content>
-                    <v-list-item-title>Open Temporary Drawer</v-list-item-title>
-                </v-list-item-content>
-            </v-list-item>
-            <v-subheader class="mt-3 grey--text text--darken-1 text-uppercase">begetter</v-subheader>
-            <v-list>
-                <v-list-item v-for="item in items2" :key="item.text" @click="">
-                    <v-list-item-avatar>
-                        <img :src="`https://randomuser.me/api/portraits/men/${item.picture}.jpg`" alt="" />
-                    </v-list-item-avatar>
-                    <v-list-item-title v-text="item.text" />
-                </v-list-item>
-            </v-list>
-        </v-list>
-    </v-navigation-drawer>
+<template lang='pug'>
+    v-navigation-drawer.black.lighten-4(v-model='isActiveDrawerLeft', app)
+        v-list.white-bg(dense)
+            v-list-item(@click='openSubDrawerLeft')
+                v-list-item-action
+                    v-icon exit_to_app
+                v-list-item-content
+                    v-list-item-title Open Temporary Drawer
+            v-subheader.mt-3.grey--text.text--darken-1.text-uppercase begetter
+            v-list
+                v-list-item(v-for='item in items', :key='item.text', @click='')
+                    v-list-item-avatar(v-if='item.text !== ""')
+                        img(:src='`https://randomuser.me/api/portraits/men/${item.picture}.jpg`', alt='')
+                    v-list-item-title(v-text='item.text', v-if='item.text !== ""')
 </template>
 
 <script>
+    import {mapGetters} from 'vuex'
+    import axios    from 'axios'
+    import resource from 'resource-axios' // Применение 'resource-axios'
+    const DB = resource(process.env.VUE_APP_DB, axios) // Применение 'resource-axios'
+
     export default {
         name: 'NavigationDrawerLeft',
         props: ['isActiveDrawerLeft'],
         data: () => ({
-            items2: [
-                { picture: 28, text: 'Joseph' },
-                { picture: 38, text: 'Apple' },
-                { picture: 48, text: 'Xbox Ahoy' },
-                { picture: 58, text: 'Nokia' },
-                { picture: 78, text: 'MKBHD' },
-            ],
+            items: [],
         }),
+        mounted() {
+            // axios.get(process.env.VUE_APP_DB + process.env.VUE_APP_DB_TECHNOLOGIES).then(response => { // применение 'axios'
+            DB.get(process.env.VUE_APP_DB_BEGETTER).then(response => {
+                // Применение 'resource-axios'
+                this.items = this.$papa.parse(response.data, { header: true }).data
+            })
+        },
         methods: {
             openSubDrawerLeft() {
                 // this.$parent.$options.parent.showSubNavigationDrawerLeft()

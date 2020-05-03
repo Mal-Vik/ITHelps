@@ -8,14 +8,14 @@
         />
         <NavigationDrawerLeft :isActiveDrawerLeft="isActiveDrawerLeft" />
         <NavigationDrawerRight :isActiveDrawerRight="isActiveDrawerRight" @emitDisplaySubDrawerRight="showNavigationSubDrawerRight" />
-        <NavigationSubDrawerRight :isActiveSubDrawerRight="isActiveSubDrawerRight" :dataSubDrawerRight="dataSubDrawerRight" />
+        <NavigationSubDrawerRight :isActiveSubDrawerRight="isActiveSubDrawerRight" :dataDrawerRight="dataDrawerRight" />
     </div>
 </template>
 
 <script>
-    import AppBar from '../components/header/AppBar'
-    import NavigationDrawerLeft from '../components/header/navigation_boxes/NavigationDrawerLeft'
-    import NavigationDrawerRight from '../components/header/navigation_boxes/NavigationDrawerRight'
+    import AppBar                   from '../components/header/AppBar'
+    import NavigationDrawerLeft     from '../components/header/navigation_boxes/NavigationDrawerLeft'
+    import NavigationDrawerRight    from '../components/header/navigation_boxes/NavigationDrawerRight'
     import NavigationSubDrawerRight from '../components/header/navigation_boxes/NavigationSubDrawerRight'
 
     export default {
@@ -31,7 +31,7 @@
             isActiveDrawerRight: true,
             isActiveSubDrawerLeft: false,
             isActiveSubDrawerRight: false,
-            dataSubDrawerRight: '',
+            dataDrawerRight: '',
         }),
         methods: {
             changeDisplayDrawerLeft(isActiveDrawerLeft) {
@@ -46,7 +46,7 @@
             showNavigationSubDrawerRight(item) {
                 let isActiveSubDrawerRight = this.isActiveSubDrawerRight
                 this.isActiveSubDrawerRight = !isActiveSubDrawerRight
-                this.dataSubDrawerRight = item
+                this.dataDrawerRight = item
             },
         },
     }
