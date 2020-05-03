@@ -1,7 +1,7 @@
 <template lang='pug'>
     v-navigation-drawer.grey.lighten-4(v-model='isActiveDrawerRight' app clipped right)
-        v-list(dense)
-            template(v-for='(item, i) in items')
+        v-list()
+            template(v-for='(item, i) in allDrawerRight')
                 v-layout(v-if='item.heading' :key='i' row align-center)
                     v-flex(xs6)
                         v-subheader(v-if='item.heading')
@@ -9,44 +9,27 @@
                     v-flex.text-xs-right(xs6)
                         v-btn(small text) edit
                 v-divider.my-3(v-else-if='item.divider' :key='i')
-                v-list-item(v-else :key='i' @click.stop='openSubDrawerRight(item.sub_drawer)')
-                    v-list-item-action
-                        v-icon {{ item.icon_name }}
+                v-list-item(v-else :key='i' @click.stop='openSubDrawerRight(item)')
+                    v-list-item-action(style='margin-right:20px')
+                        v-icon(style='margin:auto') {{ item.icon_name }}
                     v-list-item-content
                         v-list-item-title.grey--text
                             | {{ item.name }}
 </template>
 
 <script>
-    import {mapGetters} from 'vuex'
-    import axios    from 'axios'
-    import resource from 'resource-axios' // Применение 'resource-axios'
-    const DB = resource(process.env.VUE_APP_DB_URL, axios) // Применение 'resource-axios'
+    import { mapGetters } from 'vuex'
 
     export default {
         name: 'NavigationDrawerRight',
         props: [ 'isActiveDrawerRight' ],
-        data: () => ({
-            items: [],
-        }),
-        // computed: {
-        //     getAllDrawer() {
-        //         return this.$store.getters.getAllDrawer
-        //     }
-        // },
-        computed: mapGetters(['getAllDrawer']),
-        mounted() {
-            // axios.get(process.env.VUE_APP_DB + process.env.VUE_APP_DB_TECHNOLOGIES).then(response => { // применение 'axios'
-            DB.get(process.env.VUE_APP_TABLE_DRAWER_RIGHT).then(response => {
-                // Применение 'resource-axios'
-                console.log(response.data)
-                this.items = response.data
-            })
+        computed: mapGetters([ 'allDrawerRight' ]),
+        async mounted() {
+            await this.$store.dispatch('fetchDrawerRight')
         },
         methods: {
             openSubDrawerRight(item) {
                 this.$emit('emitDisplaySubDrawerRight', item)
-                // this.$parent.$options.parent.showSubNavigationDrawerRight(item) // Альтернативный вариант
             },
         },
     }

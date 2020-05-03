@@ -21,7 +21,8 @@
     "private": true,
     "main": "main.js",
     "scripts": {
-        "serve": "vue-cli-service serve --mode development",
+        "serve": "vue-cli-service serve",
+        "serve-md": "vue-cli-service serve --mode development",
         "build": "vue-cli-service build --modern",
         "strapi-dev": "cd ../ITHelps-CMS && npm develop",
         "mongod": "brew services run mongodb-community",
@@ -57,6 +58,7 @@
         "eslint-plugin-prettier": "^3.1.1",
         "eslint-plugin-vue": "^6.1.2",
         "http": "0.0.1-security",
+        "less": "^3.11.1",
         "less-loader": "^5.0.0",
         "lint-staged": "^9.5.0",
         "node-sass": "^4.12.0",
