@@ -44,6 +44,7 @@
         "@babel/core": "^7.9.0",
         "@babel/node": "^7.8.7",
         "@mdi/font": "^5.0.45",
+        "@mdi/js": "^5.1.45",
         "@vue/cli-plugin-babel": "~4.2.0",
         "@vue/cli-plugin-eslint": "~4.2.0",
         "@vue/cli-plugin-router": "~4.2.0",
