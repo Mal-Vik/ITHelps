@@ -8,6 +8,10 @@
                 span.font-weight-light Helps
         v-text-field(solo-inverted='' flat='' hide-details='' label='Search' prepend-inner-icon='fas fa-search')
         v-spacer
+        v-icon.mr-3 fas fa-external-link-alt
+        | Breadcrumbs
+
+        v-spacer
         v-app-bar-nav-icon(@click.stop='emitChangeDisplayDrawerRight(!isActiveDrawerRight)')
 </template>
 
