@@ -2,6 +2,9 @@
 // import VueFriendlyIframe from './src/plugins/vue-friendly-iframe'
 
 module.exports = {
+    devServer: {
+        port: 8080
+    },
     assetsDir: 'static',
     publicPath: './',
     outputDir: 'dist',
