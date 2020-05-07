@@ -1,7 +1,13 @@
 <template lang='pug'>
     v-navigation-drawer.grey.lighten-4(fixed temporary width='200' right v-model='isActiveDisplay')
         v-list
-            template(v-for='(item, i) in items')
+            v-list-item( :to='items["to"]')
+                v-list-item-icon
+                    v-icon {{items['icon_name']}}
+                v-list-item-title {{items['name']}}
+            v-divider
+            template(v-for='(item, i) in items["sub_drawer"]')
+
                 v-list-item(:key='i' :to='framePath+"/"+item.id')
                     v-list-item-action(style='margin-right:20px')
                         v-icon(style='margin:auto') {{ item.icon }}
@@ -23,7 +29,7 @@
             isActiveSubDrawerRight: function (isActiveSubDrawerRight) {
                 if (isActiveSubDrawerRight !== this.isActiveDisplay) {
                     this.isActiveDisplay = isActiveSubDrawerRight;
-                    this.items = this.dataDrawerRight['sub_drawer'];
+                    this.items = this.dataDrawerRight;
                 } else {
                     console.log('Равенство!')
                 }

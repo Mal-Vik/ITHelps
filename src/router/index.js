@@ -3,6 +3,8 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import JavaScript from '../views/technologies/JavaScript'
 import VueJS from '../views/technologies/VueJS'
+import CSS from '../views/technologies/CSS'
+import HTML from '../views/technologies/HTML'
 import Frame from '../views/Frame'
 
 Vue.use(VueRouter)
@@ -30,6 +32,11 @@ const routes = [
         path: '/vue-js',
         name: 'VueJS',
         component: VueJS,
+    },
+    {
+        path: '/html',
+        name: 'HTML',
+        component: HTML,
     },
     {
         path: '/frame/:id',
