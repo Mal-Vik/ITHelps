@@ -27,7 +27,7 @@
             NavigationSubDrawerRight,
         },
         data: () => ({
-            isActiveDrawerLeft: true,
+            isActiveDrawerLeft: false,
             isActiveDrawerRight: true,
             isActiveSubDrawerLeft: false,
             isActiveSubDrawerRight: false,
