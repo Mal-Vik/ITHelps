@@ -63,7 +63,7 @@
     }
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
     .HTML {
         margin: 20px;
     }
