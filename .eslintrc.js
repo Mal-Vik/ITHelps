@@ -20,6 +20,7 @@ module.exports = {
         'func-names': 'off',
         'object-shorthand': 'off',
         'vue/html-quotes': 'warn',
+        // 'vue/html-indent': ['error', 4, {baseIndent: 1}],
         'vue/script-indent': [
             'error',
             4,

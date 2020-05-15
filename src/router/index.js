@@ -4,9 +4,9 @@ import Home from '../views/Home.vue'
 import JavaScript from '../views/technologies/JavaScript'
 import Array from '../views/technologies/javascript/Array'
 import VueJS from '../views/technologies/VueJS'
-import CSS from '../views/technologies/CSS'
 import HTML from '../views/technologies/HTML'
 import Frame from '../views/Frame'
+import NotFoundComponent from '../views/NotFoundComponent'
 
 Vue.use(VueRouter)
 
@@ -49,6 +49,11 @@ const routes = [
         name: 'Frame',
         component: Frame,
     },
+    {
+        // сопоставляется со всем
+        path: '*',
+        component: NotFoundComponent,
+    }
 ]
 
 const router = new VueRouter({

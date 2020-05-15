@@ -7,7 +7,7 @@ import vuetify from './plugins/vuetify'
 import VuePapaParse from './plugins/vue-papa-parse'
 import VueFriendlyIframe from './plugins/vue-friendly-iframe'
 
-import './assets/styles/style.scss'
+//import './assets/styles/style.scss'
 
 Vue.config.productionTip = false
 
