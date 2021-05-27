@@ -45,8 +45,6 @@
 <script>
     export default {
         name: 'TJSTable',
-        // el: '',
-        // render: {},
         props: [ 'title', 'items' ],
         data: () => ({
             search: '',
@@ -71,7 +69,7 @@
         watch: {
             items(items) {
                 this.loading = !items
-                console.log("JS Array =>", items)
+                console.log("T JS Table =>", items)
             }
         },
         computed: {
@@ -84,14 +82,6 @@
             }
         },
         methods: {},
-        beforeCreate: function () {},
-        create: function () {},
-        beforeMount: function () {},
-        mounted: function () {},
-        beforeUpdate: function () {},
-        updated: function () {},
-        beforeDestroy: function () {},
-        destroyed: function () {}
     }
 </script>
 
@@ -121,10 +111,6 @@
 
         .bg-lightpink {
             background: darkmagenta;
-        }
-
-        .bg-lightgray {
-            background: lightgray
         }
     }
 </style>
